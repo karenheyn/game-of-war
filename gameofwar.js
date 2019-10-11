@@ -29,9 +29,23 @@ for (let i = 0; i < rank.length; i++){
 }
 function dealCards(){
     player1 = deck.slice(0,26);
-    player2 = deck.slice(26,52)
+    player2 = deck.slice(26,26);
 }
 
 function playGame(){
+   while (player2.length > 0 || player1.length > 0){
+   function compare(card1,card2) {
+   board = []
+   board.push(player1[i]);
+   board.push(player2[i]);
+   if (board[0] < board[1]){
+       board.unshift()
+   }
+
    
+
+       
+   }
+   
+}
 }
