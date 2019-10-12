@@ -1,7 +1,53 @@
+// class Card {
+//     constructor (suit, rank, value){
+//         this.suit = suit;
+//         this.rank = rank;
+//         this.value = value;
+//     }
+//   }
+//   class Deck {
+//     constructor () {
+//         this.length = 52;
+//        this.deck = [];
+//         // this.length = 52
+//     }
+//     makeDeck(){
+//       let suit = ["Hearts","Diamonds","Clubs","Spades"];
+//       let rank = [2,3,4,5,6,7,8,9,10,"J","Q","K","A"];
+//       let value = [2,3,4,5,6,7,8,9,10,11,12,13,14];
+//         for (let i = 0; i < suit.length; i++) {
+//             for (let j = 0; j < rank.length; j++) {
+//                 this.deck.push(new Card(suit[i],rank[j],value[j]));
+//             }
+//         }
+//     }
+//   }
+//   var deck = new Deck()
+//   deck.makeDeck();`
+  
+  
+
+
+
+// Deck = {
+//     //suits: ["Clubs", "Diamonds", "Hearts", "Spades"],
+//     deck: [],
+//     shuffledDeck: [],
+//     BuildDeck: function(){
+//         for(var suit = 0; suit < this.suits.length; suit++){
+//             for(var card = 0; card < this.cards.length; card++){
+//                 this.deck.push([this.cards[card], this.suits[suit]]);
+//             }
+//         }
+//     }
+// }
+// Deck.buildDeck
+
+
 let suit = ['Hearts','Diamonds','Clubs','Spades'];
 let rank = [2,3,4,5,6,7,8,9,10,'J','Q','K','A']; 
 let value = [2,3,4,5,6,7,8,9,10,11,12,13,14];
-let deck = cards.makeDeck
+
 class Card {
     constructor (suit, rank, value){
         this.suit = suit;
@@ -10,27 +56,27 @@ class Card {
     }
 }
 
-
-// }
 class Deck {
     constructor () {
-        cards = []
+        this.deck = []
+        // this.length = 52
     }
     makeDeck(){
-        for (let i = 0; i < suits.length; i++) {
-            for (let j = 0; j < ranks.length; j++) { 
-                // suit = suit[i];
-                // rank = rank[j];
-                // value = value[j];
-                this.cards.push(new Card(rank[j],suit[i],value[j]));
+        for (let i = 0; i < suit.length; i++) {
+            for (let j = 0; j < rank.length; j++) { 
+                this.suit = suit[i];
+                this.rank = rank[j];
+                this.value = value[j];
+                this.deck.push(new Card(this.rank[j],this.suit[i],this.value[j]));
             }
         }
-        return this.cards
     }
 }
+var deck = new Deck()
 
-let cards = new Deck(suit,rank,value);
-cards.makeDeck
+// let cards = new Deck(suit,rank,value);
+// cards.makeDeck
+
 // let deck = [];
 // let player1 = [];
 // let player2 = [];
@@ -71,11 +117,3 @@ cards.makeDeck
 //    if (board[0] < board[1]){
 //        board.unshift()
 //    }
-
-   
-
-       
-//    }
-   
-// }
-// }
