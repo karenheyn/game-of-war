@@ -1,9 +1,10 @@
 //Joe and I worked on this project together
-let suit = ["Hearts","Diamonds","Clubs","Spades"];
+let suit = ["Hearts", "Diamonds", "Clubs", "Spades"];
 let rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
 let value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 let player1 = []
 let player2 = []
+let board = []
 class Card {
     constructor(suit, rank, value) {
         this.suit = suit;
@@ -18,13 +19,13 @@ class Deck {
     }
     makeDeck() {
         for (let i = 0; i < suit.length; i++) {
-            for (let j = 0; j < rank.length; j++) {    //Blake proofread this code and give feedback
+            for (let j = 0; j < rank.length; j++) { //Blake proofread this code and give feedback
                 this.deck.push(new Card(suit[i], rank[j], value[j]));
             }
         }
     }
     shuffle() {
-        let counter = this.deck.length,          //Got this from a youtube video by Adam Coder
+        let counter = this.deck.length, //Got this from a youtube video by Adam Coder
             temp, i;
         while (counter) {
             i = Math.floor(Math.random() * counter--); //i = a random number from 52-1)
@@ -34,14 +35,35 @@ class Deck {
         }
         return this.deck
     }
-    deal(){
+    deal() {
         let a, b;
-        a = this.deck.slice(0,26);
-        b = this.deck.slice(26,52);
+        a = this.deck.slice(0, 26);
+        b = this.deck.slice(26, 52); //splits deck and pushes to player1 & player 2
         player1.push(a);
         player2.push(b);
-        
     }
+    makeBoard(){
+        let x, y;
+        x = player1[0].slice(0,1);
+        y = player2[0].slice(0,1); //puts 2 cards into play
+        board.push(x,y);
+}
+// class Game {
+//     constructor(player1, player2) {
+//         // this.player1 = player1;
+//         // this.player2 = player2;
+//         // this.board = board;
+//     }
+//     makeBoard(){
+//         let x,y;
+//         x = player1.slice(0,1);
+//         y = player2.slice(0,1)
+//         board.push(x,y);
+//         // board.pop(player1);
+//         // board.pop(player2);
+//         // return board;
+//     }
+
 }
 //         var i, j, temp
 //         for (i = wholeDeck.length - 1; i > 0; i--){
@@ -66,7 +88,8 @@ class Deck {
 var wholeDeck = new Deck();
 wholeDeck.makeDeck();
 wholeDeck.shuffle();
-holeDeck.deal();
+wholeDeck.deal();
+
 // let shuffledCards = new Deck();
 // shuffledCards.shuffleDeck();
 
