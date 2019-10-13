@@ -42,12 +42,27 @@ class Deck {
         player1.push(a);
         player2.push(b);
     }
-    makeBoard(){
+    makeBoard() {
         let x, y;
-        x = player1[0].slice(0,1);
-        y = player2[0].slice(0,1); //puts 2 cards into play
-        board.push(x,y);
-}
+        x = player1[0].shift();
+        y = player2[0].shift(); //puts 2 cards into play
+        board.push(x, y);
+    }
+    compareCards() {
+        let z;
+        if (board[0].value > board[1].value) {
+            for (let i = 0; i < board.length; i++) {
+                board.push(board[i])
+            }
+            z = board.sl(0, 1);
+            player1.push(z);
+        }else {
+            z = board.slice(0, 1);
+            player1.push(z);
+        }
+        }
+    }
+
 // class Game {
 //     constructor(player1, player2) {
 //         // this.player1 = player1;
@@ -64,31 +79,11 @@ class Deck {
 //         // return board;
 //     }
 
-}
-//         var i, j, temp
-//         for (i = wholeDeck.length - 1; i > 0; i--){
-//             j = Math.floor(Math.random() * (i+1));
-//             temp = cards[i];
-//             cards[i] = cards[j];
-//             cards[j] = temp; 
-//         }
-//         return this.wholeDeck
-//     }
-// }
-//         let { deck } = this;
-//         let j = deck.length, i;
-
-//         while (i) {
-//             i = Math.floor(Math.random() * i--);
-//             [deck][i], deck[j] = [deck[j], deck[i]];
-//         }
-//         return this.deck
-//     }
-// }
 var wholeDeck = new Deck();
 wholeDeck.makeDeck();
 wholeDeck.shuffle();
 wholeDeck.deal();
+wholeDeck.makeBoard();
 
 // let shuffledCards = new Deck();
 // shuffledCards.shuffleDeck();
