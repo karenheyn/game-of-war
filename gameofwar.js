@@ -1,3 +1,5 @@
+//Joe and I worked on this project together
+
 class Card {
     constructor(suit, rank, value) {
         this.suit = suit;
@@ -9,24 +11,57 @@ class Deck {
     constructor() {
         this.length = 52;
         this.deck = [];
-        // this.length = 52
+        this.shuffled = []
     }
     makeDeck() {
-        let suit = ["Hearts", "Diamonds", "Clubs", "Spades"];
-        let rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
-        let value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
         for (let i = 0; i < suit.length; i++) {
             for (let j = 0; j < rank.length; j++) {
                 this.deck.push(new Card(suit[i], rank[j], value[j]));
             }
         }
     }
+    shuffle() {
+        let counter = this.deck.length,          //Got this from a youtube video by Adam Coder
+            temp, i;
+        while (counter) {
+            i = Math.floor(Math.random() * counter--);
+            temp = this.deck[counter];
+            this.deck[counter] = this.deck[i];
+            this.deck[i] = temp;
+        }
+        return this.deck
+    }
 }
-var deck = new Deck()
-deck.makeDeck();
+//         var i, j, temp
+//         for (i = wholeDeck.length - 1; i > 0; i--){
+//             j = Math.floor(Math.random() * (i+1));
+//             temp = cards[i];
+//             cards[i] = cards[j];
+//             cards[j] = temp; 
+//         }
+//         return this.wholeDeck
+//     }
+// }
+//         let { deck } = this;
+//         let j = deck.length, i;
 
-  
-  
+//         while (i) {
+//             i = Math.floor(Math.random() * i--);
+//             [deck][i], deck[j] = [deck[j], deck[i]];
+//         }
+//         return this.deck
+//     }
+// }
+var wholeDeck = new Deck();
+wholeDeck.makeDeck();
+wholeDeck.shuffle();
+// let shuffledCards = new Deck();
+// shuffledCards.shuffleDeck();
+
+
+
+
+
 
 
 
