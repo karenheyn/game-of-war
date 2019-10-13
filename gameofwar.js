@@ -1,5 +1,9 @@
 //Joe and I worked on this project together
-
+let suit = ["Hearts","Diamonds","Clubs","Spades"];
+let rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
+let value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+let player1 = []
+let player2 = []
 class Card {
     constructor(suit, rank, value) {
         this.suit = suit;
@@ -11,11 +15,10 @@ class Deck {
     constructor() {
         this.length = 52;
         this.deck = [];
-        this.shuffled = []
     }
     makeDeck() {
         for (let i = 0; i < suit.length; i++) {
-            for (let j = 0; j < rank.length; j++) {
+            for (let j = 0; j < rank.length; j++) {    //Blake proofread this code and give feedback
                 this.deck.push(new Card(suit[i], rank[j], value[j]));
             }
         }
@@ -24,12 +27,20 @@ class Deck {
         let counter = this.deck.length,          //Got this from a youtube video by Adam Coder
             temp, i;
         while (counter) {
-            i = Math.floor(Math.random() * counter--);
-            temp = this.deck[counter];
-            this.deck[counter] = this.deck[i];
+            i = Math.floor(Math.random() * counter--); //i = a random number from 52-1)
+            temp = this.deck.counter;
+            this.deck.counter = this.deck[i];
             this.deck[i] = temp;
         }
         return this.deck
+    }
+    deal(){
+        let a, b;
+        a = this.deck.slice(0,26);
+        b = this.deck.slice(26,52);
+        player1.push(a);
+        player2.push(b);
+        
     }
 }
 //         var i, j, temp
@@ -55,6 +66,7 @@ class Deck {
 var wholeDeck = new Deck();
 wholeDeck.makeDeck();
 wholeDeck.shuffle();
+holeDeck.deal();
 // let shuffledCards = new Deck();
 // shuffledCards.shuffleDeck();
 
