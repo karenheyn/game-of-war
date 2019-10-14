@@ -49,17 +49,15 @@ class Deck {
         board.push(x, y);
     }
     compareCards() {
-        let z;
-        if (board[0].value > board[1].value) {
-            for (let i = 0; i < board.length; i++) {
-                board.push(board[i])
-            }
-            z = board.sl(0, 1);
-            player1.push(z);
-        }else {
-            z = board.slice(0, 1);
-            player1.push(z);
+        let j = board[0];
+        let k = board[1];
+        if (j.value > k.value) {
+            board.shift(j) && board.shift(k);
+            player1[0].push(j,k);
+
         }
+        else
+            console.log('yay')
         }
     }
 
