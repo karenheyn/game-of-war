@@ -54,12 +54,15 @@ class Deck {
         if (j.value > k.value) {
             board.shift(j) && board.shift(k);
             player1[0].push(j,k);
-
+        }else if
+            (j.value < k.value) {
+                board.shift(j) && board.shift(k);
+                player2[0].push(j,k);
+        }else{
+            console.log('war')
         }
-        else
-            console.log('yay')
         }
-    }
+}
 
 // class Game {
 //     constructor(player1, player2) {
