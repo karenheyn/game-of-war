@@ -2,9 +2,11 @@
 let suit = ["Hearts", "Diamonds", "Clubs", "Spades"];
 let rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
 let value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-let player1 = []
-let player2 = []
-let board = []
+let player1 = [];
+let player2 = [];
+let board = [];
+let war1;
+let war2 = [];
 class Card {
     constructor(suit, rank, value) {
         this.suit = suit;
@@ -53,17 +55,28 @@ class Deck {
         let k = board[1];
         if (j.value > k.value) {
             board.shift(j) && board.shift(k);
-            player1[0].push(j,k);
-        }else if
-            (j.value < k.value) {
-                board.shift(j) && board.shift(k);
-                player2[0].push(j,k);
-        }else{
+            player1[0].push(j, k);
+        } else if (j.value < k.value) {
+            board.shift(j) && board.shift(k);
+            player2[0].push(j, k);
+        } else { 
+            // player1.slice(0,4)
             console.log('war')
-        }
-        }
-}
+            }
+            
+    }
 
+makeWar() {
+    war1 = player1[0].slice(0,4)
+    war2 = player2[0].slice(0,4);
+    player1[0].splice(0,4);
+    player2[0].splice(0,4);
+
+
+
+
+}
+}
 // class Game {
 //     constructor(player1, player2) {
 //         // this.player1 = player1;
@@ -82,7 +95,7 @@ class Deck {
 
 var wholeDeck = new Deck();
 wholeDeck.makeDeck();
-wholeDeck.shuffle();
+// wholeDeck.shuffle();
 wholeDeck.deal();
 wholeDeck.makeBoard();
 
@@ -90,6 +103,7 @@ wholeDeck.makeBoard();
 // shuffledCards.shuffleDeck();
 
 
+// board.slice(wholeDeck.deck[0]) 
 
 
 
