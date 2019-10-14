@@ -81,8 +81,21 @@ class Deck {
             allCards = [...war1, ...war2, ...board]
             player2 = [...player2[0], ...allCards]
             board.splice(0, 2);
-        } else {
-            this.makeWar
+        } else if
+            (war1[0].value === war[2].value){
+                war1 += player1[0].slice(0, 4)
+                war2 += player2[0].slice(0, 4);
+                if (war1[7]>war2[7])
+                allCards = [...war1, ...war2, ...board]
+                player1 = [...player1[0], ...allCards]
+            }else if (war1[7]<war2[7])
+                allCards = [...war1, ...war2, ...board]
+                player2 = [...player1[0], ...allCards]
+            }
+            else
+            
+
+            }
 
             }
         }
