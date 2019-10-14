@@ -6,7 +6,8 @@ let player1 = [];
 let player2 = [];
 let board = [];
 let war1;
-let war2 = [];
+let war2;
+let allCards;
 class Card {
     constructor(suit, rank, value) {
         this.suit = suit;
@@ -59,24 +60,54 @@ class Deck {
         } else if (j.value < k.value) {
             board.shift(j) && board.shift(k);
             player2[0].push(j, k);
-        } else { 
+        } else {
             // player1.slice(0,4)
             console.log('war')
-            }
-            
+        }
+
     }
 
+    // makeWar() {
+    //     war1 = player1[0].slice(0, 4)
+    //     war2 = player2[0].slice(0, 4);
+    //     player1[0].splice(0, 4);
+    //     player2[0].splice(0, 4);
+    //     if (war1[0].value > war2[0].value) {
+    //         allCards = [...war1, ...war2, ...board]
+    //         player1 = [...player1[0], ...allCards]
+    //         board.splice(0, 2);
+    //     }else if (war1[0].value < war2[0].value) {
+    //         allCards = [...war1, ...war2, ...board]
+    //         player2 = [...player2[0], ...allCards]
+    //         board.splice(0, 2);
+    //     }else{ 
+
+
+
+
+
+}
+
+
+class War {
 makeWar() {
-    war1 = player1[0].slice(0,4)
-    war2 = player2[0].slice(0,4);
-    player1[0].splice(0,4);
-    player2[0].splice(0,4);
-
-
-
-
+    war1 = player1[0].slice(0, 4)
+    war2 = player2[0].slice(0, 4);
+    player1[0].splice(0, 4);
+    player2[0].splice(0, 4);
+    if (war1[0].value > war2[0].value) {
+        allCards = [...war1, ...war2, ...board]
+        player1 = [...player1[0], ...allCards]
+        board.splice(0, 2);
+    } else if (war1[0].value < war2[0].value) {
+        allCards = [...war1, ...war2, ...board]
+        player2 = [...player2[0], ...allCards]
+        board.splice(0, 2);
+    } else {
+        makeWar();
+    }
 }
-}
+
 // class Game {
 //     constructor(player1, player2) {
 //         // this.player1 = player1;
