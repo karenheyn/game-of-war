@@ -1,7 +1,5 @@
 //Joe and I worked on this project together
-let suit = ["Hearts", "Diamonds", "Clubs", "Spades"];
-let rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
-let value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+
 let player1 = [];
 let player2 = [];
 let board = [];
@@ -16,6 +14,9 @@ class Card {
     }
 }
 class Deck {
+    suit = ["Hearts", "Diamonds", "Clubs", "Spades"];
+    rank = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
+    value = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
     constructor() {
         this.length = 52;
         this.deck = [];
