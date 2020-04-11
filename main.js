@@ -68,21 +68,21 @@ class Game {
 
   playRound() {
     // checks for cards remaining in both hands
-    if (
-      this.players[0].playersCards.length > 0 &&
-      this.players[1].playersCards.length > 0
-    ) {
-      this.cardsInPlay.push(this.players[0].playersCards[0].shift());
-      this.cardsInPlay.push(this.players[1].playersCards[0].shift());
-      console.log(
-        `Player 1 played ${this.cardsInPlay[0].rank} of ${this.cardsInPlay[0].suit}`
-      );
-      console.log(
-        `Player 2 played ${this.cardsInPlay[1].rank} of ${this.cardsInPlay[1].suit}`
-      );
-      this.compare();
-    }
+    // if (
+    //   this.players[0].playersCards[0].length > 0 &&
+    //   this.players[1].playersCards[0].length > 0
+    // ) {
+    this.cardsInPlay.push(this.players[0].playersCards[0].shift());
+    this.cardsInPlay.push(this.players[1].playersCards[0].shift());
+    console.log(
+      `Player 1 played ${this.cardsInPlay[0].rank} of ${this.cardsInPlay[0].suit}`
+    );
+    console.log(
+      `Player 2 played ${this.cardsInPlay[1].rank} of ${this.cardsInPlay[1].suit}`
+    );
+    this.compare();
   }
+  // }
 
   compare() {
     if (this.cardsInPlay.length >= 2) {
@@ -128,6 +128,12 @@ class Game {
         } of ${this.cardsInPlay[this.cardsInPlay.length - 1].suit}`
       );
       this.compare();
+    } else {
+      if (this.players[0].playersCards[0].length < 4) {
+        console.log(`player 1 doesnt have enought cards, and loses`);
+      } else if (this.players[1].playersCards[0].length < 4) {
+        console.log(`player 2 doesnt have enought cards, and loses`);
+      }
     }
     // } else {
     //   if (this.players[0].playersCards[0] > this.players[1].playersCards[0]) {
@@ -142,16 +148,16 @@ class Game {
     game.makeBoard();
     game.dealCards();
     while (
-      this.players[0].playersCards.length &&
-      this.players[1].playersCards.length
+      this.players[0].playersCards[0].length &&
+      this.players[1].playersCards[0].length
     ) {
       game.playRound();
     }
-    // if (this.players[0].playersCards.length === 0) {
-    //   console.log(`player 2 won the game!`);
-    // } else {
-    //   console.log(`player 1 won the game! `);
-    // }
+    if (!this.players[0].playersCards[0].length) {
+      console.log(`player 2 won the game!`);
+    } else if (!this.players[1].playersCards[0].length) {
+      console.log(`player 1 won the game! `);
+    }
   }
 }
 
