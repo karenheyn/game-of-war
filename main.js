@@ -62,18 +62,12 @@ class Game {
     b = this.deck[0].slice(26, 52); //splits deck and pushes to player1 & player 2
     this.players[0].playersCards.push(a);
     this.players[1].playersCards.push(b);
-    console.log("both players have 26 cards");
-    console.log(this.players);
   }
 
   playRound() {
-    // checks for cards remaining in both hands
-    // if (
-    //   this.players[0].playersCards[0].length > 0 &&
-    //   this.players[1].playersCards[0].length > 0
-    // ) {
     this.cardsInPlay.push(this.players[0].playersCards[0].shift());
     this.cardsInPlay.push(this.players[1].playersCards[0].shift());
+    // puts first card from each hand into play
     console.log(
       `Player 1 played ${this.cardsInPlay[0].rank} of ${this.cardsInPlay[0].suit}`
     );
@@ -82,25 +76,23 @@ class Game {
     );
     this.compare();
   }
-  // }
 
   compare() {
     if (this.cardsInPlay.length >= 2) {
       if (
-        this.cardsInPlay[this.cardsInPlay.length - 2].value >
+        this.cardsInPlay[this.cardsInPlay.length - 2].value > //compares last and 1st to last card
         this.cardsInPlay[this.cardsInPlay.length - 1].value
       ) {
-        console.log("Player 1 won");
-        this.players[0].playersCards[0].push(...this.cardsInPlay);
+        console.log("Player 1 won the round");
+        this.players[0].playersCards[0].push(...this.cardsInPlay); //pushes into players hand
         this.cardsInPlay = [];
       } else if (
         this.cardsInPlay[this.cardsInPlay.length - 2].value <
         this.cardsInPlay[this.cardsInPlay.length - 1].value
       ) {
-        console.log("Player 2 won");
+        console.log("Player 2 won the round");
         this.players[1].playersCards[0].push(...this.cardsInPlay);
         this.cardsInPlay = [];
-        // this.playRound();
       } else {
         this.makeWar();
       }
@@ -109,12 +101,12 @@ class Game {
 
   makeWar() {
     if (
-      this.players[0].playersCards[0].length > 4 &&
+      this.players[0].playersCards[0].length > 4 && //checks for enough cards for war
       this.players[1].playersCards[0].length > 4
     ) {
       console.log("!!!WAR!!!");
       for (let i = 0; i < 4; i++) {
-        this.cardsInPlay.push(this.players[0].playersCards[0].shift());
+        this.cardsInPlay.push(this.players[0].playersCards[0].shift()); //takes four cards from each hand
         this.cardsInPlay.push(this.players[1].playersCards[0].shift());
       }
       console.log(
@@ -130,30 +122,25 @@ class Game {
       this.compare();
     } else {
       if (this.players[0].playersCards[0].length < 4) {
+        // if player runs out of cards he loses
         console.log(`player 1 doesnt have enought cards, and loses`);
       } else if (this.players[1].playersCards[0].length < 4) {
         console.log(`player 2 doesnt have enought cards, and loses`);
       }
     }
-    // } else {
-    //   if (this.players[0].playersCards[0] > this.players[1].playersCards[0]) {
-    //     console.log("player 1 wins!");
-    //     this.players[0].playersCards[0] = [];
-    //   } else {
-    //     console.log("player 2 wins!");
-    //   }
-    // }
   }
   playGame() {
     game.makeBoard();
     game.dealCards();
     while (
+      //check that length != 0
       this.players[0].playersCards[0].length &&
       this.players[1].playersCards[0].length
     ) {
       game.playRound();
     }
     if (!this.players[0].playersCards[0].length) {
+      //checks for winner
       console.log(`player 2 won the game!`);
     } else if (!this.players[1].playersCards[0].length) {
       console.log(`player 1 won the game! `);
@@ -163,7 +150,4 @@ class Game {
 
 const game = new Game();
 const deck = new Deck();
-// game.makeBoard();
-// game.dealCards();
-// game.playRound();
 game.playGame();
