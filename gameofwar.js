@@ -40,62 +40,62 @@ class Deck {
         return this.deck
     }
 }
-//     deal() {
-//         let a, b;
-//         a = this.deck.slice(0, 26);
-//         b = this.deck.slice(26, 52); //splits deck and pushes to player1 & player 2
-//         player1.push(a);
-//         player2.push(b);
-//         console.log('both players have 25 cards')
-//     }
-//     makeBoard() {
-//         let x, y;
-//         x = player1[0].shift();
-//         y = player2[0].shift(); //puts 2 cards into play
-//         board.push(x, y);
-//         console.log(`player 1 played ${x.rank + x.suit}  and player 2 played ${y.rank + y.suit}`)
-//     }
-//     compareCards() {
-//         while (player1.length > 1 || player2.length > 1) {
-//             let j = board[0];
-//             let k = board[1];
-//             if (j.value > k.value) {
-//                 board.shift(j) && board.shift(k);
-//                 player1[0].push(j, k);
-//             } else if (j.value < k.value) {
-//                 board.shift(j) && board.shift(k);
-//                 player2[0].push(j, k);
-//             } else if (j.value === k.value)
-//                 wholeDeck.makeWar()
-//         }
-//     }
-//     makeWar() {
-//         war1 = player1[0].slice(0, 4);
-//         war2 = player2[0].slice(0, 4);
-//         player1[0].splice(0, 4);
-//         player2[0].splice(0, 4);
-//         if (war1[0].value > war2[0].value) {
-//             allCards = [...war1, ...war2, ...board]
-//             player1 = [...player1[0], ...allCards]
-//             board.splice(0, 2);
-//         } else if (war1[0].value < war2[0].value) {
-//             allCards = [...war1, ...war2, ...board]
-//             player2 = [...player2[0], ...allCards]
-//             board.splice(0, 2);
-//             // } else if (war1[0].value === war[1].value) {
-//             //     war1 += player1[0].slice(0, 4)
-//             //     war2 += player2[0].slice(0, 4);
-//             //     if (war1[7] > war2[7])
-//             //         allCards = [...war1, ...war2, ...board]
-//             //     player1 = [...player1[0], ...allCards]
-//             //     board.slice[0, 2];
-//             // } else if (war1[7] < war2[7])
-//             //     allCards = [...war1, ...war2, ...board]
-//             // player2 = [...player1[0], ...allCards]
-//             // board.slice[0, 2]
-//         }
-//     }
-// }
+    deal() {
+        let a, b;
+        a = this.deck.slice(0, 26);
+        b = this.deck.slice(26, 52); //splits deck and pushes to player1 & player 2
+        player1.push(a);
+        player2.push(b);
+        console.log('both players have 25 cards')
+    }
+    makeBoard() {
+        let x, y;
+        x = player1[0].shift();
+        y = player2[0].shift(); //puts 2 cards into play
+        board.push(x, y);
+        console.log(`player 1 played ${x.rank + x.suit}  and player 2 played ${y.rank + y.suit}`)
+    }
+    compareCards() {
+        while (player1.length > 1 || player2.length > 1) {
+            let j = board[0];
+            let k = board[1];
+            if (j.value > k.value) {
+                board.shift(j) && board.shift(k);
+                player1[0].push(j, k);
+            } else if (j.value < k.value) {
+                board.shift(j) && board.shift(k);
+                player2[0].push(j, k);
+            } else if (j.value === k.value)
+                wholeDeck.makeWar()
+        }
+    }
+    makeWar() {
+        war1 = player1[0].slice(0, 4);
+        war2 = player2[0].slice(0, 4);
+        player1[0].splice(0, 4);
+        player2[0].splice(0, 4);
+        if (war1[0].value > war2[0].value) {
+            allCards = [...war1, ...war2, ...board]
+            player1 = [...player1[0], ...allCards]
+            board.splice(0, 2);
+        } else if (war1[0].value < war2[0].value) {
+            allCards = [...war1, ...war2, ...board]
+            player2 = [...player2[0], ...allCards]
+            board.splice(0, 2);
+            // } else if (war1[0].value === war[1].value) {
+            //     war1 += player1[0].slice(0, 4)
+            //     war2 += player2[0].slice(0, 4);
+            //     if (war1[7] > war2[7])
+            //         allCards = [...war1, ...war2, ...board]
+            //     player1 = [...player1[0], ...allCards]
+            //     board.slice[0, 2];
+            // } else if (war1[7] < war2[7])
+            //     allCards = [...war1, ...war2, ...board]
+            // player2 = [...player1[0], ...allCards]
+            // board.slice[0, 2]
+        }
+    }
+}
 
 
 
