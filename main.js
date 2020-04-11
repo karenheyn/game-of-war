@@ -66,24 +66,60 @@ class Game {
     console.log(this.players);
   }
   playRound() {
-    // while (
-    //   this.players[0].playersCards.length &&
-    //   this.players[1].playersCards.length
-    // ) {
-    // checks for cards remaining in both hands
-    this.cardsInPlay.push(this.players[0].playersCards[0].pop());
-    this.cardsInPlay.push(this.players[1].playersCards[0].pop());
-    console.log(this.players[0]);
-    console.log(this.cardsInPlay);
+    while (
+      this.players[0].playersCards.length &&
+      this.players[1].playersCards.length
+    ) {
+      // checks for cards remaining in both hands
+      this.cardsInPlay.push(this.players[0].playersCards[0].shift());
+      this.cardsInPlay.push(this.players[1].playersCards[0].shift());
+      console.log(
+        `Player 1 played ${this.cardsInPlay[0].rank} of ${this.cardsInPlay[0].suit}`
+      );
+      console.log(
+        `Player 2 played ${this.cardsInPlay[1].rank} of ${this.cardsInPlay[1].suit}`
+      );
+      if (this.cardsInPlay[0].value > this.cardsInPlay[1].value) {
+        console.log("Player 1 won");
+        this.players[0].playersCards[0].push(...this.cardsInPlay);
+      } else if (this.cardsInPlay[0].value < this.cardsInPlay[1].value) {
+        console.log("Player 2 won");
+        this.players[1].playersCards[0].push(...this.cardsInPlay);
+      } else {
+        this.makeWar();
+      }
+      // console.log(this.players);
+      // console.log(this.players[0]);
+    }
   }
-  // console.log(this.players);
-  // console.log(this.players[0]);
+  makeWar() {
+    console.log("!!!WAR!!!");
+    for (let i = 0; i < 4; i++) {
+      this.cardsInPlay.push(this.players[0].playersCards[0].shift());
+      this.cardsInPlay.push(this.players[1].playersCards[0].shift());
+    }
+    console.log(
+      `player one played ${
+        this.cardsInPlay[this.cardsInPlay.length - 1].rank
+      } of ${this.cardsInPlay[8].suit}`
+    );
+    console.log(
+      `player two played ${
+        this.cardsInPlay[this.cardsInPlay.length - 2].rank
+      } of ${this.cardsInPlay[9].suit}`
+    );
+    if (this.cardsInPlay[8].value > this.cardsInPlay[9].value) {
+      console.log(`Player 1 won the war`);
+      this.players[0].playersCards[0].push(...this.cardsInPlay);
+    } else if (this.cardsInPlay[8].value < this.cardsInPlay[9].value) {
+      console.log(`Player 2 won the war`);
+      this.players[1].playersCards[0].push(...this.cardsInPlay);
+    } else {
+      this.makeWar();
+    }
+  }
 }
-// const card = new Card();
-// const deck = new Deck();
-// const players = new Players();
-// const game = new Game();
-// console.log(deck);
+
 const game = new Game();
 const deck = new Deck();
 game.makeBoard();
