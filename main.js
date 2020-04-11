@@ -85,23 +85,25 @@ class Game {
   }
 
   compare() {
-    if (
-      this.cardsInPlay[this.cardsInPlay.length - 2].value >
-      this.cardsInPlay[this.cardsInPlay.length - 1].value
-    ) {
-      console.log("Player 1 won");
-      this.players[0].playersCards[0].push(...this.cardsInPlay);
-      this.cardsInPlay = [];
-    } else if (
-      this.cardsInPlay[this.cardsInPlay.length - 2].value <
-      this.cardsInPlay[this.cardsInPlay.length - 1].value
-    ) {
-      console.log("Player 2 won");
-      this.players[1].playersCards[0].push(...this.cardsInPlay);
-      this.cardsInPlay = [];
-      // this.playRound();
-    } else {
-      this.makeWar();
+    if (this.cardsInPlay.length >= 2) {
+      if (
+        this.cardsInPlay[this.cardsInPlay.length - 2].value >
+        this.cardsInPlay[this.cardsInPlay.length - 1].value
+      ) {
+        console.log("Player 1 won");
+        this.players[0].playersCards[0].push(...this.cardsInPlay);
+        this.cardsInPlay = [];
+      } else if (
+        this.cardsInPlay[this.cardsInPlay.length - 2].value <
+        this.cardsInPlay[this.cardsInPlay.length - 1].value
+      ) {
+        console.log("Player 2 won");
+        this.players[1].playersCards[0].push(...this.cardsInPlay);
+        this.cardsInPlay = [];
+        // this.playRound();
+      } else {
+        this.makeWar();
+      }
     }
   }
 
@@ -126,16 +128,15 @@ class Game {
         } of ${this.cardsInPlay[this.cardsInPlay.length - 1].suit}`
       );
       this.compare();
-    } else {
-      if (
-        this.players[0].playersCards[0].length >
-        this.players[1].playersCards[0].length
-      ) {
-        console.log("player 1 wins the game hehe!");
-      } else {
-        console.log("player 2 wins game hehe!");
-      }
     }
+    // } else {
+    //   if (this.players[0].playersCards[0] > this.players[1].playersCards[0]) {
+    //     console.log("player 1 wins!");
+    //     this.players[0].playersCards[0] = [];
+    //   } else {
+    //     console.log("player 2 wins!");
+    //   }
+    // }
   }
   playGame() {
     game.makeBoard();
@@ -146,11 +147,11 @@ class Game {
     ) {
       game.playRound();
     }
-    if (!this.players[0].playersCards.length) {
-      console.log(`player 2 won the game!`);
-    } else {
-      console.log(`player 1 won the game! `);
-    }
+    // if (this.players[0].playersCards.length === 0) {
+    //   console.log(`player 2 won the game!`);
+    // } else {
+    //   console.log(`player 1 won the game! `);
+    // }
   }
 }
 
